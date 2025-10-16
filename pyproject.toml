@@ -4,4 +4,24 @@ version = "0.1.0"
 description = "Projeto desenvolvido para a certificação de AI Engineer na Indicium."
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+    "numpy>=2.3.4",
+    "pandas>=2.3.3",
+    "ruff>=0.14.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = ["data", "docs", ".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "C4"]
+ignore = ["E501"]  # exemplo: ignora erro de linha longa
+fixable = ["ALL"]
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.3.0",
+    "ruff>=0.14.0",
+]
