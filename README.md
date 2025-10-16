@@ -22,7 +22,14 @@ ai_engineer_projects/
 ```bash
 git clone https://github.com/AurelioGuilherme/ai_engineer_projects
 cd ai_engineer_projects
+uv sync
+
+.venv/Scripts/activate
+
+source .venv/bin/activate 
+
 uv pip install -r requirements.txt
+
 ```
 
 

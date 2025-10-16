@@ -1,0 +1,18 @@
+# .pre-commit-config.yaml
+repos:
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.14.0
+    hooks:
+      - id: ruff
+        name: ruff-lint
+        stages: [pre-commit]
+        language: system
+        entry: ruff check --fix
+        additional_dependencies: []
+
+      - id: ruff-format
+        name: ruff-format
+        stages: [pre-commit]
+        language: system
+        entry: ruff format
+        additional_dependencies: []
