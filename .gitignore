@@ -12,4 +12,4 @@ wheels/
 # Sensitive files
 .env
 docs/documento.md
-
+data/*
