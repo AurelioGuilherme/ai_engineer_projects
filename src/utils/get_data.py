@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 
 # URL base
 BASE_URL = "https://opendatasus.saude.gov.br"
-DATASET_URL = f"{BASE_URL}/dataset/srag-2021-a-2024"
+DEFAULT_DATASET_URL = f"{BASE_URL}/dataset/srag-2021-a-2024"
 
 # Diretório de saída
 OUTPUT_DIR = os.path.join("data", "srag_csvs")
@@ -46,10 +46,10 @@ def download_csv(name: str, url: str):
             remote_size = int(remote_head.headers.get("Content-Length", 0))
 
             if local_size == remote_size:
-                print(f"🟡 Já existe e está atualizado: {name}")
+                print(f"Já existe e está atualizado: {name}")
                 return
 
-        print(f"⬇️  Baixando {name} ...")
+        print(f"Baixando {name}")
         r = requests.get(url, timeout=60)
         r.raise_for_status()
 
@@ -62,19 +62,22 @@ def download_csv(name: str, url: str):
         print(f"❌ Erro ao baixar {name}: {e}")
 
 
-def main():
-    print(f"🚀 Iniciando coleta em {datetime.now():%Y-%m-%d %H:%M:%S}")
-    soup = fetch_html(DATASET_URL)
+def main(url: str = DEFAULT_DATASET_URL):
+    """Executa o processo completo de coleta de CSVs SRAG."""
+    print(f"Iniciando coleta em {datetime.now():%Y-%m-%d %H:%M:%S}")
+    print(f"URL usada: {url}")
+
+    soup = fetch_html(url=url)
     csv_links = get_csv_links(soup)
 
     if not csv_links:
         print("⚠️ Nenhum link CSV encontrado.")
         return
 
-    for name, url in csv_links:
-        download_csv(name, url)
+    for name, csv_url in csv_links:
+        download_csv(name, csv_url)
 
-    print("🏁 Processo concluído!")
+    print("✅ Processo concluído!")
 
 
 if __name__ == "__main__":
