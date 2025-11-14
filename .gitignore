@@ -8,3 +8,15 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Sensitive files
+.env
+docs/documento.md
+data/*
+
+# Database files
+*.sqlite
+srag.db
+
+# Test files
+src/notebooks/agent_test
