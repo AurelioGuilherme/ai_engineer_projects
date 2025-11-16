@@ -128,7 +128,7 @@ source .venv/bin/activate
 ```
 
 > ⚠️ [WARNING]
-> Ao executar em um SO diferente como teste, foi identificada a falta de uma dependencia `litellm` que é reponsavel por enviar parte dos traces para o Langfuse, caso a versão utilizada apresentar algum erro, é possivel solucionar para a plena execução.
+> Ao executar em um SO diferente como teste, foi identificada a falta de uma dependencia `litellm` que é reponsavel por enviar parte dos traces para o Langfuse, caso a versão utilizada apresentar algum erro, é possivel solucionar o erro executando o código abaixo.
 >```bash
 >uv add litellm
 > ```
