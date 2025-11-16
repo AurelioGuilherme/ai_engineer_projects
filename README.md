@@ -127,6 +127,15 @@ Ative a virtualenv:
 source .venv/bin/activate 
 ```
 
+> ⚠️ [WARNING]
+> Ao executar em um SO diferente como teste, foi identificada a falta de uma dependencia `litellm` que é reponsavel por enviar parte dos traces para o Langfuse, caso a versão utilizada apresentar algum erro, é possivel solucionar para a plena execução.
+>```bash
+>uv add litellm
+> ```
+
+
+
+
 ## 🔑 Variáveis de Ambiente
 
 Copie o arquivo de exemplo:
